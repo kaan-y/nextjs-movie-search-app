@@ -3,19 +3,11 @@ import { getMovieDetails } from '@/redux/actions/movie'
 import { useSelector, useDispatch } from 'react-redux'
 import NextHead from 'next/head'
 import NextImg from 'next/image'
-
 import Layout from '@/components/Layout'
+import DetailTable from '@/components/DetailTable'
 
 const MovieDetails = () => {
   const { loading, details } = useSelector((state) => state.movie)
-  const titlesToShow = [
-    'Title',
-    'Year',
-    'Runtime',
-    'Director',
-    'Actors',
-    'Rewards',
-  ]
 
   return (
     <>
@@ -35,23 +27,7 @@ const MovieDetails = () => {
               objectFit="contain"
             />
           </div>
-          <table className="col-span-2 table-auto">
-            <tbody>
-              {Object.entries(details).map(([key, value]) => {
-                if (titlesToShow.includes(key))
-                  return (
-                    <tr>
-                      <td className="border px-6 py-4 text-gray-400 font-medium">
-                        {key}
-                      </td>
-                      <td className="border px-6 py-4 text-gray-600 font-medium">
-                        {value}
-                      </td>
-                    </tr>
-                  )
-              })}
-            </tbody>
-          </table>
+          <DetailTable details={details} />
         </div>
       </Layout>
     </>

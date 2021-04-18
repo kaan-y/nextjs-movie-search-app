@@ -20,7 +20,7 @@ const Index = () => {
             <p className="text-right p-4">Total Results: {totalResults}</p>
             <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 relative">
               {result.map((movie) => (
-                <MovieCard movie={movie} />
+                <MovieCard movie={movie} key={movie.imdbID} />
               ))}
             </div>
           </>
@@ -30,12 +30,6 @@ const Index = () => {
       </Layout>
     </>
   )
-}
-
-export async function getServerSideProps() {
-  return {
-    props: {},
-  }
 }
 
 export default Index
