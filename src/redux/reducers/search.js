@@ -17,8 +17,8 @@ export default function search(state = {}, action = {}) {
         ...state,
         loading: false,
         result: action.payload.Search,
-        totalResults: action.payload.totalResults,
-        apiError: action.payload.Error || '',
+        totalResults: action.payload.totalResults || null,
+        apiError: action.payload.Error || null,
         searchTerm: action.searchTerm,
       }
 

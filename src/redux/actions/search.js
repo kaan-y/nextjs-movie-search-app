@@ -4,21 +4,41 @@ export const SEARCH_LOAD = 'SEARCH_LOAD'
 export const SEARCH_LOAD_SUCCESS = 'SEARCH_LOAD_SUCCESS'
 export const SEARCH_LOAD_FAIL = 'SEARCH_LOAD_FAIL'
 
-export const search = (param) => async (dispatch) => {
+export const search = (param) => (dispatch) => {
   try {
     dispatch({
       type: SEARCH_LOAD,
     })
 
-    const response = await axios.get(BASE_URL, {
-      params: {
-        s: param,
-      },
-    })
-    dispatch({
-      type: SEARCH_LOAD_SUCCESS,
-      payload: response.data,
-      searchTerm: param,
+    Promise.all([
+      axios.get(BASE_URL, {
+        params: {
+          s: param,
+          page: 1,
+        },
+      }),
+      axios.get(BASE_URL, {
+        params: {
+          s: param,
+          page: 2,
+        },
+      }),
+    ]).then((responses) => {
+      let movies = null
+      if (responses[0].data.Search) {
+        movies = [
+          ...(responses[0].data.Search ?? ''),
+          ...(responses[1].data.Search ?? ''),
+        ] // concat movies
+      }
+
+      const response = responses[0].data
+      response.Search = movies
+      dispatch({
+        type: SEARCH_LOAD_SUCCESS,
+        payload: response,
+        searchTerm: param,
+      })
     })
   } catch (error) {
     dispatch({

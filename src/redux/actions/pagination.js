@@ -8,7 +8,7 @@ import {
   SEARCH_LOAD_FAIL,
 } from '@/redux/actions/search'
 
-export const changePage = (page) => async (dispatch) => {
+export const changePage = (page) => (dispatch) => {
   try {
     dispatch({
       type: SEARCH_LOAD,
@@ -16,17 +16,37 @@ export const changePage = (page) => async (dispatch) => {
 
     const reduxStore = initializeStore()
     const { search } = reduxStore.getState()
-    const response = await axios.get(BASE_URL, {
-      params: {
-        s: search.searchTerm,
-        page: page,
-      },
-    })
 
-    dispatch({
-      type: SEARCH_LOAD_SUCCESS,
-      payload: response.data,
-      searchTerm: search.searchTerm,
+    Promise.all([
+      axios.get(BASE_URL, {
+        params: {
+          s: search.searchTerm,
+          page: page * 2 - 1, // first 10 set
+        },
+      }),
+      axios.get(BASE_URL, {
+        params: {
+          s: search.searchTerm,
+          page: page * 2, // second 10 set
+        },
+      }),
+    ]).then((responses) => {
+      let movies = null
+      if (responses[0].data.Search) {
+        movies = [
+          ...(responses[0].data.Search ?? ''),
+          ...(responses[1].data.Search ?? ''),
+        ] // concat movies
+      }
+
+      const response = responses[0].data
+      response.Search = movies
+
+      dispatch({
+        type: SEARCH_LOAD_SUCCESS,
+        payload: response,
+        searchTerm: search.searchTerm,
+      })
     })
   } catch (error) {
     dispatch({
