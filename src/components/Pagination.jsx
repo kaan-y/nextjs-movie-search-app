@@ -1,6 +1,7 @@
 import ReactPaginate from 'react-paginate'
 import { changePage } from '@/redux/actions/pagination'
 import { useDispatch } from 'react-redux'
+import PropTypes from 'prop-types'
 
 const Pagination = ({ totalResults }) => {
   const dispatch = useDispatch()
@@ -30,6 +31,10 @@ const Pagination = ({ totalResults }) => {
       previousClassName="p-2 border border-red-200 mx-1 rounded-lg outline-none"
     />
   )
+}
+
+Pagination.propTypes = {
+  totalResults: PropTypes.string.isRequired,
 }
 
 export default Pagination

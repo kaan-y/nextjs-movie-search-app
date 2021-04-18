@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types'
+
 const DetailTable = ({ details }) => {
   const titlesToShow = [
     'Title',
@@ -34,6 +36,10 @@ const DetailTable = ({ details }) => {
       </tbody>
     </table>
   )
+}
+
+DetailTable.propTypes = {
+  details: PropTypes.object.isRequired,
 }
 
 export default DetailTable

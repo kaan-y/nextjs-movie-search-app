@@ -1,5 +1,6 @@
 import NextImg from 'next/image'
 import NextLink from 'next/link'
+import PropTypes from 'prop-types'
 
 const MovieCard = ({ movie }) => (
   <NextLink href={`/movie/${movie.imdbID}`}>
@@ -18,5 +19,9 @@ const MovieCard = ({ movie }) => (
     </div>
   </NextLink>
 )
+
+MovieCard.propTypes = {
+  movie: PropTypes.object.isRequired,
+}
 
 export default MovieCard
