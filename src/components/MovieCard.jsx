@@ -3,20 +3,12 @@ import NextLink from 'next/link'
 
 const MovieCard = ({ movie }) => (
   <NextLink href={`/movie/${movie.imdbID}`}>
-    <div className="bg-white rounded-lg shadow-lg overflow-hidden md:cursor-pointer my-2">
-      <div>
-        <NextImg
-          src={movie.Poster}
-          layout="responsive"
-          alt={movie.Title}
-          width={90}
-          height={100}
-        />
+    <div className="bg-white border rounded-lg shadow-lg overflow-hidden md:cursor-pointer my-2">
+      <div className="relative h-64 lg:h-72 w-full">
+        <NextImg src={movie.Poster} layout="fill" alt={movie.Title} />
       </div>
       <div className="p-6">
-        <h2 className="font-bold mb-2 text-2xl text-black-800">
-          {movie.Title}
-        </h2>
+        <h2 className="font-bold mb-2 text-lg text-black-800">{movie.Title}</h2>
         <span className="text-black-500 text-sm">{movie.Year}</span>
       </div>
     </div>

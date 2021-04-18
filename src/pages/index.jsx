@@ -18,13 +18,13 @@ const Index = () => {
       <Layout>
         <SearchBar />
         {result ? (
-          <div className="grid sm:grid-cols-3 sm:gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 relative">
             {result.map((movie) => (
               <MovieCard movie={movie} />
             ))}
           </div>
         ) : (
-          <p className="text-center text-3xl my-5">{apiError}</p>
+          <p className="text-center text-2xl my-5">{apiError}</p>
         )}
       </Layout>
     </>
