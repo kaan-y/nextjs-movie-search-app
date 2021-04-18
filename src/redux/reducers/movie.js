@@ -4,12 +4,7 @@ import {
   MOVIE_DETAIL_LOAD_FAIL,
 } from '@/redux/actions/movie'
 
-const initialState = {
-  loading: false,
-  details: [],
-}
-
-export default function movie(state = initialState, action = {}) {
+export default function movie(state = {}, action = {}) {
   switch (action.type) {
     case MOVIE_DETAIL_LOAD:
       return {

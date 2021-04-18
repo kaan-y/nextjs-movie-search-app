@@ -4,14 +4,7 @@ import {
   SEARCH_LOAD_FAIL,
 } from '@/redux/actions/search'
 
-const initialState = {
-  loading: false,
-  result: [],
-  totalResults: 0,
-  apiError: '',
-}
-
-export default function search(state = initialState, action = {}) {
+export default function search(state = {}, action = {}) {
   switch (action.type) {
     case SEARCH_LOAD:
       return {
