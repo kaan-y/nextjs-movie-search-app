@@ -5,11 +5,11 @@ const DetailTable = ({ details }) => {
     'Runtime',
     'Director',
     'Actors',
-    'Rewards',
+    'Ratings',
   ]
 
   return (
-    <table className="col-span-2 table-auto">
+    <table className="col-span-2 table-auto overflow-hidden rounded-lg">
       <tbody>
         {Object.entries(details).map(([key, value], index) => {
           if (titlesToShow.includes(key))
@@ -19,7 +19,14 @@ const DetailTable = ({ details }) => {
                   {key}
                 </td>
                 <td className="border px-6 py-4 text-gray-600 font-medium">
-                  {value}
+                  {Array.isArray(value)
+                    ? value.map((item) => (
+                        <>
+                          <span>{item.Source}</span> - <span>{item.Value}</span>
+                          <br />
+                        </>
+                      ))
+                    : value}
                 </td>
               </tr>
             )

@@ -18,7 +18,7 @@ const MovieDetails = () => {
       </NextHead>
       <Layout>
         <div className="sm:grid sm:grid-cols-3 sm:gap-8">
-          <div className="relative h-full w-full flex justify-center mb-2 sm:mb-0">
+          <div className="relative h-full w-full flex justify-center mb-2 sm:mb-0 border rounded-lg p-4">
             <NextImg
               src={details.Poster}
               alt={details.Title}
