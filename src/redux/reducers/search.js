@@ -19,6 +19,7 @@ export default function search(state = {}, action = {}) {
         result: action.payload.Search,
         totalResults: action.payload.totalResults,
         apiError: action.payload.Error || '',
+        searchTerm: action.searchTerm,
       }
 
     case SEARCH_LOAD_FAIL:

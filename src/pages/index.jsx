@@ -3,11 +3,13 @@ import NextHead from 'next/head'
 import Layout from '@/components/Layout'
 import SearchBar from '@/components/SearchBar'
 import MovieCard from '@/components/MovieCard'
+import Pagination from '@/components/Pagination'
 
 const Index = () => {
   const { result, totalResults, apiError } = useSelector(
     (state) => state.search
   )
+
   return (
     <>
       <NextHead>
@@ -27,6 +29,7 @@ const Index = () => {
         ) : (
           <p className="text-center text-2xl my-5">{apiError}</p>
         )}
+        {result && <Pagination totalResults={totalResults} />}
       </Layout>
     </>
   )
