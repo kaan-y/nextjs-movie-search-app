@@ -1,13 +1,13 @@
 import { initializeStore } from '@/redux/store'
 import { getMovieDetails } from '@/redux/actions/movie'
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 import NextHead from 'next/head'
 import NextImg from 'next/image'
 import Layout from '@/components/Layout'
 import DetailTable from '@/components/DetailTable'
 
 const MovieDetails = () => {
-  const { loading, details } = useSelector((state) => state.movie)
+  const { details } = useSelector((state) => state.movie)
 
   return (
     <>
