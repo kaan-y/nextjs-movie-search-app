@@ -20,7 +20,11 @@ const MovieDetails = () => {
         <div className="sm:grid sm:grid-cols-3 sm:gap-8">
           <div className="relative h-full w-full flex justify-center mb-2 sm:mb-0 border rounded-lg p-4">
             <NextImg
-              src={details.Poster}
+              src={
+                details.Poster === 'N/A'
+                  ? '/no_image_poster.png'
+                  : details.Poster
+              }
               alt={details.Title}
               width={300}
               height={445}

@@ -24,11 +24,13 @@ const Pagination = ({ totalResults }) => {
       initialPage={0}
       containerClassName="flex justify-center my-6"
       pageClassName="p-2 border border-red-200 mx-1 rounded-lg"
-      pageLinkClassName="text-gray-600 outline-none"
+      pageLinkClassName="text-gray-600 cursor-pointer outline-none"
       breakClassName="p-2 mx-1 outline-none"
       activeClassName="bg-red-200"
-      nextClassName="p-2 border border-red-200 mx-1 rounded-lg outline-none"
-      previousClassName="p-2 border border-red-200 mx-1 rounded-lg outline-none"
+      nextClassName="p-2 border border-red-200 mx-1 rounded-lg"
+      nextLinkClassName="cursor-pointer outline-none"
+      previousClassName="p-2 border border-red-200 mx-1 rounded-lg"
+      previousLinkClassName="cursor-pointer outline-none"
     />
   )
 }

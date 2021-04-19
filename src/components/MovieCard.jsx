@@ -7,7 +7,7 @@ const MovieCard = ({ movie }) => (
     <div className="bg-white border rounded-lg shadow-lg overflow-hidden md:cursor-pointer my-2">
       <div className="relative h-64 lg:h-72 w-full">
         <NextImg
-          src={movie.Poster === 'N/A' ? '/popcorn.png' : movie.Poster}
+          src={movie.Poster === 'N/A' ? '/no_image_poster.png' : movie.Poster}
           layout="fill"
           alt={movie.Title}
         />

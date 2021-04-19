@@ -11,16 +11,16 @@ const DetailTable = ({ details }) => {
   ]
 
   return (
-    <table className="col-span-2 table-auto overflow-hidden rounded-lg">
+    <table className="col-span-2 table-fixed overflow-hidden rounded-lg">
       <tbody>
         {Object.entries(details).map(([key, value], index) => {
           if (titlesToShow.includes(key))
             return (
               <tr key={index}>
-                <td className="border px-6 py-4 text-gray-400 font-medium">
+                <td className="border text-right px-6 py-4 text-gray-400 font-medium w-1/4 sm:w1/6">
                   {key}
                 </td>
-                <td className="border px-6 py-4 text-gray-600 font-medium">
+                <td className="border px-6 py-4 text-gray-600 font-medium w-full">
                   {Array.isArray(value)
                     ? value.map((item) => (
                         <>
